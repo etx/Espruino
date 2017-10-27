@@ -23,8 +23,8 @@ PB4,JTRST,-,TIM3_CH1,-,-,SPI1_MISO,SPI3_MISO,I2S3ext_SD,-,I2C3_SDA,-,-,-,-,-,EVE
 PB5,-,-,TIM3_CH2,-,I2C1_SMBA,SPI1_MOSI,SPI3_MOSI/I2S3_SD,-,-,-,-,-,-,-,-,EVENT OUT
 PB6,-,-,TIM4_CH1,-,I2C1_SCL,-,-,USART1_TX,-,-,-,-,-,-,-,EVENT OUT
 PB7,-,-,TIM4_CH2,-,I2C1_SDA,-,-,USART1_RX,-,-,-,-,-,-,-,EVENT OUT
-PB8,-,-,TIM4_CH3,TIM10_CH1,I2C1_SCL,-,-,-,-,-,-,-,SDIO_D4,-,-,EVENT OUT
-PB9,-,-,TIM4_CH4,TIM11_CH1,I2C1_SDA,SPI2_NSS/I2S2_WS,-,-,-,-,-,-,SDIO_D5,-,-,EVENT OUT
+PB8,-,-,TIM4_CH3,TIM10_CH1,I2C1_SCL,-,-,-,CAN1_RX,-,-,-,SDIO_D4,-,-,EVENT OUT
+PB9,-,-,TIM4_CH4,TIM11_CH1,I2C1_SDA,SPI2_NSS/I2S2_WS,-,-,CAN1_TX,-,-,-,SDIO_D5,-,-,EVENT OUT
 PB10,-,TIM2_CH3,-,-,I2C2_SCL,SPI2_SCK/I2S2_CK,-,-,-,-,-,-,-,-,-,EVENT OUT
 PB12,-,TIM1_BKIN,-,-,I2C2_SMBA,SPI2_NSS/I2S2_WS,-,-,-,-,-,-,-,-,-,EVENT OUT
 PB13,-,TIM1_CH1N,-,-,-,SPI2_SCK/I2S2_CK,-,-,-,-,-,-,-,-,-,EVENT OUT
@@ -37,11 +37,11 @@ PC3,-,-,-,-,-,SPI2_MOSI/I2S2_SD,-,-,-,-,-,-,-,-,-,EVENT OUT
 PC4,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,EVENT OUT
 PC5,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,EVENT OUT
 PC6,-,-,TIM3_CH1,-,-,I2S2_MCK,-,-,USART6_TX,-,-,-,SDIO_D6,-,-,EVENT OUT
-PC7,-,-,TIM3_CH2,-,-,-,I2S3_MCK,-,USART6_RX,-,-,-,SDIO_D7,-,-,EVENT OUT
+PC7,-,-,TIM3_CH2,-,-,SPI2_SCK,I2S3_MCK,-,USART6_RX,-,-,-,SDIO_D7,-,-,EVENT OUT
 PC8,-,-,TIM3_CH3,-,-,-,-,-,USART6_CK,-,-,-,SDIO_D0,-,-,EVENT OUT
 PC9,MCO_2,-,TIM3_CH4,-,I2C3_SDA,I2S_CKIN,-,-,-,-,-,-,SDIO_D1,-,-,EVENT OUT
-PC10,-,-,-,-,-,-,SPI3_SCK/I2S3_CK,-,-,-,-,-,SDIO_D2,-,-,EVENT OUT
-PC11,-,-,-,-,-,I2S3ext_SD,SPI3_MISO,-,-,-,-,-,SDIO_D3,-,-,EVENT OUT
+PC10,-,-,-,-,-,-,SPI3_SCK/I2S3_CK,USART3_TX,-,-,-,-,SDIO_D2,-,-,EVENT OUT
+PC11,-,-,-,-,-,I2S3ext_SD,SPI3_MISO,USART3_RX,-,-,-,-,SDIO_D3,-,-,EVENT OUT
 PC12,-,-,-,-,-,-,SPI3_MOSI/I2S3_SD,-,-,-,-,-,SDIO_CK,-,-,EVENT OUT
 PC13,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,EVENT OUT
 PC14,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,EVENT OUT

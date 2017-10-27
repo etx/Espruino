@@ -19,24 +19,26 @@ import pinutils;
 info = {
  'name' : "ST NUCLEO-F413ZH",
  'link' :  [ "http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1847/PF260320"],
- 'default_console' : "EV_SERIAL3", # USART3
- #'default_console' : "EV_USBSERIAL", # Onboard USB
- 'default_console_tx' : "D8", # USART3_TX on PD8,
- 'default_console_rx' : "D9", # USART3_RX on PD9
+ 'default_console' : "EV_USBSERIAL", # Onboard USB
+ #'default_console' : "EV_SERIAL3", # USART3
+ #'default_console_tx' : "C10", # USART3_TX on PC10,
+ #'default_console_rx' : "C11", # USART3_RX on PC11
+ #'default_console' : "EV_SERIAL6", # USART3
+ #'default_console_tx' : "A11", # USART6_TX on PA11,
+ #'default_console_rx' : "A12", # USART6_RX on PA12
  'variables' :  7423, # (128-12)*1024/16-1
- 'binary_name' : 'espruino_%v_nucleof413zh.bin',
+ 'binary_name' : 'espruino_%v_cbt.bin',
  'build' : {
    'optimizeflags' : '-O3 -w',
    'libraries' : [
      'USB_HID',
-    #  'NET',
-    #  'GRAPHICS',
-    #  'NEOPIXEL',
-    #  'CRYPTO',
+     #'NET',
+     #'GRAPHICS',
+     #'NEOPIXEL',
+     #'CRYPTO',
      'CAN'
    ],
    'makefile' : [
-     'NUCLEO=1',
      'DEFINES+=-DUSE_USB_OTG_FS=1 -DUSB_NO_VBUS_SENSE=1',
      'STLIB=STM32F413xH',
      'PRECOMPILED_OBJS+=$(ROOT)/targetlibs/stm32f4/lib/startup_stm32f413xx.o'
@@ -46,14 +48,14 @@ info = {
 chip = {
   'part' : "STM32F413ZHT6",
   'family' : "STM32F4",
-  'package' : "LQFP144",
+  'package' : "LQFP144", #LQFP64
   'ram' : 320, # 0x0001 8000 long, from 0x2000 0000 to 0x2001 7FFF
   'flash' : 1536, # 0x0008 0000 long, from 0x0800 0000 to 0x0807 FFFF
   'speed' : 100,
-  'usart' : 3,
-  'spi' : 4,
-  'i2c' : 3,
-  'adc' : 1,
+  'usart' : 6, #6
+  'spi' : 4, #4
+  'i2c' : 3, #3
+  'adc' : 1, #1
   'dac' : 0,
   'can' : 3,
   'saved_code' : {
@@ -74,35 +76,32 @@ devices = {
             'pin_2' : 'H1' },
   'OSC_RTC' : { 'pin_1' : 'C14', # MB1136 C-02 corresponds to a board configured with on-board 32kHz oscillator
                 'pin_2' : 'C15' },
-  'LED1' : { 'pin' : 'B0'},
-  'LED2' : { 'pin' : 'B14'},
-  'LED3' : { 'pin' : 'B7'},
+  'LED1' : { 'pin' : 'C6'},
+  'LED2' : { 'pin' : 'C7'},
+  'LED3' : { 'pin' : 'C8'},
   'BTN1' : { 'pin' : 'C13',
              # 'inverted' : True, # 1 when unpressed, 0 when pressed! (Espruino board is 1 when pressed)
              'pinstate': 'IN_PULLUP', # to specify INPUT, OUPUT PULL_UP PULL_DOWN..
            },
-  'JTAG' : {
-        'pin_MS' : 'A13',
-        'pin_CK' : 'A14',
-        'pin_DI' : 'A15'
-          },
+  #'JTAG' : {
+#        'pin_MS' : 'A13',
+#        'pin_CK' : 'A14',
+#        'pin_DI' : 'A15'
+#          },
   'USB' : {#'pin_otg_pwr' : 'C0',
-           #'pin_vsense' : 'A9',
            'pin_dm' : 'A11',
            'pin_dp' : 'A12',
-           #'pin_vbus' : 'A9',
+           'pin_vbus' : 'A9',
            'pin_id' : 'A10', },
-  'NUCLEO_A' : [ 'A0','A1','A4','B0','C1','C0' ],
-  'NUCLEO_D' : [ 'A3','A2','A10','B3','B5','B4','B10','A8','A9','C7','B6','A7','A6','A5','B9','B8' ],
   'CAN' : [
     {
-    #  'pin_rx' : 'D0',
-    #  'pin_tx' : 'D1'
-       'pin_rx' : 'B8',
-       'pin_tx' : 'B9'
+      'pin_rx' : 'B8',
+      'pin_tx' : 'B9'
     },{
+    #   'pin_rx' : 'B5',
+    #   'pin_tx' : 'B13'
       'pin_rx' : 'B5',
-      'pin_tx' : 'B13'
+      'pin_tx' : 'B6'
     },{
       'pin_rx' : 'B3',
       'pin_tx' : 'B4'

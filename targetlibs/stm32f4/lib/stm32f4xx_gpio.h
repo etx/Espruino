@@ -331,6 +331,13 @@ typedef struct
   * @brief   AF 11 selection
   */
 #define GPIO_AF_ETH             ((uint8_t)0x0B)  /* ETHERNET Alternate Function mapping */
+#if defined(STM32F413xH)
+#define GPIO_AF_UART4            ((uint8_t)0x0B)  /* UART4 Alternate Function mapping */
+#define GPIO_AF_UART5            ((uint8_t)0x0B)  /* UART4 Alternate Function mapping */
+#define GPIO_AF_UART9            ((uint8_t)0x0B)  /* UART4 Alternate Function mapping */
+#define GPIO_AF_UART10           ((uint8_t)0x0B)  /* UART4 Alternate Function mapping */
+#define GPIO_AF_CAN3             ((uint8_t)0x0B)  /* CAN3 Alternate Function mapping */
+#endif
 
 /**
   * @brief   AF 12 selection

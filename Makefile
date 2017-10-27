@@ -625,6 +625,12 @@ ifdef WICED
   WRAPPERSOURCES += targets/emw3165/jswrap_emw3165.c
 endif
 
+ifdef USE_CAN
+INCLUDE += -I$(ROOT)/libs/can
+TARGETSOURCES  += $(ROOT)/targetlibs/stm32f4/lib/stm32f4xx_can.c
+WRAPPERSOURCES += libs/can/jswrap_can.c
+endif
+
 endif # BOOTLOADER ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ DON'T USE STUFF ABOVE IN BOOTLOADER
 
 # =========================================================================

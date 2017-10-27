@@ -83,7 +83,7 @@ DEVICES = {
  "JTAG":"JTAG",
  "ESP8266":"ESP8266",
  "MAG":"MAG",
- "IR":"IR", 
+ "IR":"IR",
  "NFC":"NFC",
  "CAPSENSE":"CAPSENSE",
  "PWR":"PWR"
@@ -275,9 +275,9 @@ def get_device_util_timer(board):
   #define UTIL_TIMER_IRQHandler TIM5_IRQHandler
   #define UTIL_TIMER_APB1 LL_APB1_GRP1_PERIPH_TIM5
   """}
-  if ((board.chip["family"]=="STM32F1") | (board.chip["family"]=="STM32F2") | 
+  if ((board.chip["family"]=="STM32F1") | (board.chip["family"]=="STM32F2") |
      (board.chip["family"]=="STM32F3") | (board.chip["family"]=="STM32F4")):
-    if board.chip["part"].startswith("STM32F401") | board.chip["part"].startswith("STM32F411"):
+    if board.chip["part"].startswith("STM32F401") | board.chip["part"].startswith("STM32F411") | (board.chip["part"][:9]=="STM32F413"):
       return { 'timer' : "TIM5", 'defines' : """
 // Used by various pins, but always with other options
 #define UTIL_TIMER TIM5
@@ -302,7 +302,7 @@ def get_device_util_timer(board):
 #define UTIL_TIMER_APB1 RCC_APB1Periph_TIM7
 """}
   return False
-  
+
 # Remove any pinfunctions from the pins array that are used elsewhere the the board
 def remove_used_pinfunctions(pins, board):
   util_timer = get_device_util_timer(board)

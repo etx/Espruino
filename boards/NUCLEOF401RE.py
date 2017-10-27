@@ -29,7 +29,7 @@ info = {
    'libraries' : [
      'NET',
      'GRAPHICS',
-     'NEOPIXEL'
+     'NEOPIXEL',
    ],
    'makefile' : [
      'NUCLEO=1',

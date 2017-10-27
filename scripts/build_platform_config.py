@@ -289,6 +289,7 @@ codeOut("#define SPI_COUNT                            "+str(board.chip["spi"]))
 codeOut("#define I2C_COUNT                            "+str(board.chip["i2c"]))
 codeOut("#define ADC_COUNT                            "+str(board.chip["adc"]))
 codeOut("#define DAC_COUNT                            "+str(board.chip["dac"]))
+codeOut("#define CAN_COUNT                            "+str(board.chip["can"]))
 codeOut("");
 codeOut("#define DEFAULT_CONSOLE_DEVICE              "+board.info["default_console"]);
 if "default_console_tx" in board.info:
@@ -297,6 +298,7 @@ if "default_console_rx" in board.info:
   codeOut("#define DEFAULT_CONSOLE_RX_PIN "+toPinDef(board.info["default_console_rx"]))
 if "default_console_baudrate" in board.info:
   codeOut("#define DEFAULT_CONSOLE_BAUDRATE "+board.info["default_console_baudrate"])
+
 
 
 codeOut("");
@@ -376,7 +378,13 @@ if "CAPSENSE" in board.devices:
   codeOutDevicePin("CAPSENSE", "pin_rx", "CAPSENSE_RX_PIN")
   codeOutDevicePin("CAPSENSE", "pin_tx", "CAPSENSE_TX_PIN")
 
-for device in ["USB","SD","LCD","JTAG","ESP8266","IR"]:
+if "CAN" in board.devices:
+  for n,can in enumerate(board.devices["CAN"]):
+      for att,pin in can.iteritems():
+        codeOut("#define CAN"+str(n+1)+"_"+att[4:].upper()+" "+toPinDef(pin))
+        if att[:3]=="pin": usedPinChecks.append("(PIN)==" + toPinDef(pin)+"/* CAN"+str(n+1)+" */")
+
+for device in ["USB","SD","LCD","JTAG","ESP8266","IR","CAN1","CAN2","CAN3"]:
   if device in board.devices:
     for entry in board.devices[device]:
       if entry[:3]=="pin": usedPinChecks.append("(PIN)==" + toPinDef(board.devices[device][entry])+"/* "+device+" */")
